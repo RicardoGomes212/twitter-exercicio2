@@ -19,7 +19,7 @@ class MessageController extends Controller
      */
     public function index()
     {
-        return view('home', ['listMessages' => Message::all()->sortByDesc("position")]);
+        return view('home', ['listMessages' => Message::where('user_id', auth()->user()->id)->get()->sortByDesc("position")]);
     }
 
     //save all the messages in the database
